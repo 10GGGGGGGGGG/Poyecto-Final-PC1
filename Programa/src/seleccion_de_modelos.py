@@ -122,7 +122,6 @@ class seleccion_de_modelos():
             self.RForest_comboBox2.currentIndex(), "switch out of bounds")
 
         self.modelos.append(RandomForestClassifier(random_state=0,
-                                                   n_jobs=-1,
                                                    n_estimators=self.RForest_spinBox_trees.value(),
                                                    max_depth=depth,
                                                    criterion=RForest_criterion,
@@ -142,8 +141,7 @@ class seleccion_de_modelos():
             2: "kd_tree",
             3: "ball_tree"
         }
-        self.modelos.append(KNeighborsClassifier(n_jobs=-1,
-                                                 n_neighbors=self.knn_spinBox.value(),
+        self.modelos.append(KNeighborsClassifier(n_neighbors=self.knn_spinBox.value(),
                                                  algorithm=knn_switcher.get(self.knn_comboBox.currentIndex(), "switch out of bounds")))
         self.modelosDataframe = self.modelosDataframe.append(
             {"modelo": "K Vecinos",
@@ -246,7 +244,6 @@ class seleccion_de_modelos():
             3: "adaptive"
         }
         self.modelos.append(SGDClassifier(random_state=0,
-                                          n_jobs=-1,
                                           max_iter=self.sgd_spinBox.value(),
                                           learning_rate=sgd_switcher.get(
                                               self.sgd_comboBox.currentIndex(), "switch out of bounds"),

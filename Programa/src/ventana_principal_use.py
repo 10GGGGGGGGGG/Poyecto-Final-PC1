@@ -36,13 +36,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, seleccion_de_modelos, ent
         self.labelPrep.setText("Procesando.")
         app.processEvents()
 
-        textos, y = load_texts(self.desp_line.text(), 'despoblacion')
+        textos, self.y = load_texts(
+            self.desp_line.text(), 0)  # 0 = despoblación
 
         self.labelPrep.setText("Procesando..")
         app.processEvents()
 
-        textos, y = load_texts(self.nodesp_line.text(),
-                               'no_despoblacion', textos, y)
+        textos, self.y = load_texts(
+            self.nodesp_line.text(), 1, textos, self.y)  # 1 = no despoblación
 
         self.labelPrep.setText("Procesando...")
         app.processEvents()
@@ -54,25 +55,29 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, seleccion_de_modelos, ent
         self.labelPrep.setText("¡Listo!")
 
     def loadingMatrix(self):
-        self.labelPrep.setStyleSheet(
-            "QLabel {font-weight: normal;color : black;}")
-        self.labelMatrix.setText("Procesando...")
+        if((not self.cv_occ.isChecked()) and (not self.cv_tfidf.isChecked())):
+            self.labelMatrix.setText(
+                "Seleccione uno de los dos tipos de matriz de términos.")
+        else:
+            self.labelPrep.setStyleSheet(
+                "QLabel {font-weight: normal;color : black;}")
+            self.labelMatrix.setText("Procesando...")
 
-        if(self.cv_occ.isChecked()):
-            X = cv_ocurrences(self.processed_texts, maxdf=(
-                self.maxdfSpin.value()/100), mindf=(self.mindfSpin.value()/100))
-        elif(self.cv_tfidf.isChecked()):
-            X = cv_TFIDF(self.processed_texts, maxdf=(
-                self.maxdfSpin.value()/100), mindf=(self.mindfSpin.value()/100))
+            if(self.cv_occ.isChecked()):
+                self.X = cv_ocurrences(self.processed_texts, maxdf=(
+                    self.maxdfSpin.value()/100), mindf=(self.mindfSpin.value()/100))
+            elif(self.cv_tfidf.isChecked()):
+                self.X = cv_TFIDF(self.processed_texts, maxdf=(
+                    self.maxdfSpin.value()/100), mindf=(self.mindfSpin.value()/100))
 
-        model = PandasModel(X, header=True)
-        self.tableViewMatriz.setModel(model)
-        self.tableViewMatriz.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-        self.tableViewMatriz.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
+            model = PandasModel(self.X, header=True)
+            self.tableViewMatriz.setModel(model)
+            self.tableViewMatriz.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+            self.tableViewMatriz.verticalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
-        self.labelPrep.setStyleSheet(
-            "QLabel {font-weight: bold;color: rgb(0, 221, 0);}")
-        self.labelMatrix.setText("¡Listo!")
+            self.labelPrep.setStyleSheet(
+                "QLabel {font-weight: bold;color: rgb(0, 221, 0);}")
+            self.labelMatrix.setText("¡Listo!")
 
 
 if __name__ == "__main__":

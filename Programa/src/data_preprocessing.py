@@ -107,7 +107,6 @@ def crossValidationTest(clf, name, X_train, y_train, folds):
     print('accuracy score: '+str(accuracy))
     return accuracy
 
-
 # Función para entrenar el modelo con todo el train set y ver los resultados de predicciones del train set y el test set
 
 
