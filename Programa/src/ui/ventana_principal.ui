@@ -75,7 +75,7 @@ QPushButton{
        </font>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="datos">
        <property name="font">
@@ -104,6 +104,8 @@ QPushButton{
           <property name="font">
            <font>
             <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -143,6 +145,8 @@ QPushButton{
           <property name="font">
            <font>
             <pointsize>-1</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -562,7 +566,7 @@ QPushButton{
         <item>
          <widget class="QToolBox" name="toolBox">
           <property name="currentIndex">
-           <number>9</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="arbol_decision">
            <property name="geometry">
@@ -972,8 +976,8 @@ QPushButton{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>590</width>
-             <height>168</height>
+             <width>1038</width>
+             <height>405</height>
             </rect>
            </property>
            <attribute name="label">
@@ -2951,8 +2955,8 @@ QPushButton{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1038</width>
-             <height>405</height>
+             <width>405</width>
+             <height>108</height>
             </rect>
            </property>
            <attribute name="label">
@@ -3188,7 +3192,20 @@ QPushButton{
               <property name="title">
                <string>Entrenamiento y guardado de modelos</string>
               </property>
-              <layout class="QVBoxLayout" name="verticalLayout_21">
+              <layout class="QVBoxLayout" name="verticalLayout_10">
+               <item>
+                <spacer name="verticalSpacer_21">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
                <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_44">
                  <item>
@@ -3212,7 +3229,7 @@ QPushButton{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QComboBox" name="comboBox"/>
+                  <widget class="QComboBox" name="modelos_comboBox"/>
                  </item>
                  <item>
                   <spacer name="horizontalSpacer_86">
@@ -3230,10 +3247,20 @@ QPushButton{
                 </layout>
                </item>
                <item>
-                <layout class="QVBoxLayout" name="verticalLayout_10">
-                 <property name="spacing">
-                  <number>4</number>
-                 </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_51">
+                 <item>
+                  <spacer name="horizontalSpacer_96">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
                  <item>
                   <widget class="QPushButton" name="pushButton">
                    <property name="text">
@@ -3242,11 +3269,54 @@ QPushButton{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QProgressBar" name="progressBar">
-                   <property name="value">
-                    <number>0</number>
+                  <spacer name="horizontalSpacer_95">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_50">
+                 <item>
+                  <spacer name="horizontalSpacer_94">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_37">
+                   <property name="text">
+                    <string/>
                    </property>
                   </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_93">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
                  </item>
                 </layout>
                </item>
@@ -3327,6 +3397,56 @@ QPushButton{
                  </item>
                 </layout>
                </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_52">
+                 <item>
+                  <spacer name="horizontalSpacer_97">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="label_38">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_98">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <spacer name="verticalSpacer_22">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
             </item>
@@ -3348,7 +3468,23 @@ QPushButton{
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_48">
            <item>
-            <widget class="QTableView" name="tableView"/>
+            <widget class="QTableView" name="cv_tableView">
+             <property name="sizeAdjustPolicy">
+              <enum>QAbstractScrollArea::AdjustToContents</enum>
+             </property>
+             <property name="editTriggers">
+              <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::EditKeyPressed</set>
+             </property>
+             <property name="alternatingRowColors">
+              <bool>true</bool>
+             </property>
+             <property name="sortingEnabled">
+              <bool>true</bool>
+             </property>
+             <attribute name="horizontalHeaderCascadingSectionResizes">
+              <bool>true</bool>
+             </attribute>
+            </widget>
            </item>
           </layout>
          </widget>

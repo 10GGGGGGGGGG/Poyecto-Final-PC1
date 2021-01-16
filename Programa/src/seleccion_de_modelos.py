@@ -69,6 +69,9 @@ class seleccion_de_modelos():
         print(self.modelosDataframe)
         self.tableView_modelos.setModel(modelt)
         self.tableView_modelos.resizeRowsToContents()
+        for index, row in self.modelosDataframe.iterrows():
+            self.modelos_comboBox.addItem(row['modelo'])
+        self.modelos_comboBox.setSizeAdjustPolicy(0)
 
     def loadTree(self):
         depth = None if self.dTree_spinBox.value() == 0 else self.dTree_spinBox.value()
