@@ -69,6 +69,7 @@ class seleccion_de_modelos():
         print(self.modelosDataframe)
         self.tableView_modelos.setModel(modelt)
         self.tableView_modelos.resizeRowsToContents()
+        self.modelos_comboBox.clear()
         for index, row in self.modelosDataframe.iterrows():
             self.modelos_comboBox.addItem(row['modelo'])
         self.modelos_comboBox.setSizeAdjustPolicy(0)

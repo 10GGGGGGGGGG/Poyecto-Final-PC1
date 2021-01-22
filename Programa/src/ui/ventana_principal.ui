@@ -35,7 +35,7 @@
 #guardado_modelosBox{
 	background-color: rgb(237, 235, 255);
 }
-#desp_line, #nodesp_line{
+#desp_line, #nodesp_line, #pred_line, #model_line{
 	color: rgb(0, 0, 255);
 }
 QLabel, QPushButton, QCheckBox, QRadioButton, QSpinBox{
@@ -75,7 +75,7 @@ QPushButton{
        </font>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="datos">
        <property name="font">
@@ -104,8 +104,6 @@ QPushButton{
           <property name="font">
            <font>
             <pointsize>-1</pointsize>
-            <weight>50</weight>
-            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -145,8 +143,6 @@ QPushButton{
           <property name="font">
            <font>
             <pointsize>-1</pointsize>
-            <weight>50</weight>
-            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -566,7 +562,7 @@ QPushButton{
         <item>
          <widget class="QToolBox" name="toolBox">
           <property name="currentIndex">
-           <number>2</number>
+           <number>10</number>
           </property>
           <widget class="QWidget" name="arbol_decision">
            <property name="geometry">
@@ -976,8 +972,8 @@ QPushButton{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1038</width>
-             <height>405</height>
+             <width>590</width>
+             <height>168</height>
             </rect>
            </property>
            <attribute name="label">
@@ -3110,8 +3106,8 @@ QPushButton{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1038</width>
-             <height>405</height>
+             <width>369</width>
+             <height>119</height>
             </rect>
            </property>
            <attribute name="label">
@@ -3174,7 +3170,7 @@ QPushButton{
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_19">
             <item>
-             <widget class="QPushButton" name="trainModels_button">
+             <widget class="QPushButton" name="CVModels_button">
               <property name="text">
                <string>Realizar validación cruzada</string>
               </property>
@@ -3262,7 +3258,7 @@ QPushButton{
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton">
+                  <widget class="QPushButton" name="training_button">
                    <property name="text">
                     <string>Entrenar modelo</string>
                    </property>
@@ -3299,7 +3295,7 @@ QPushButton{
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label_37">
+                  <widget class="QLabel" name="training_label">
                    <property name="text">
                     <string/>
                    </property>
@@ -3307,46 +3303,6 @@ QPushButton{
                  </item>
                  <item>
                   <spacer name="horizontalSpacer_93">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_45" stretch="1,10,1,1">
-                 <item>
-                  <spacer name="horizontalSpacer_87">
-                   <property name="orientation">
-                    <enum>Qt::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="lineEdit"/>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="pushButton_3">
-                   <property name="text">
-                    <string>selec. carpeta de guardado</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <spacer name="horizontalSpacer_88">
                    <property name="orientation">
                     <enum>Qt::Horizontal</enum>
                    </property>
@@ -3376,7 +3332,7 @@ QPushButton{
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_2">
+                  <widget class="QPushButton" name="save_model_button">
                    <property name="text">
                     <string>Guardar modelo</string>
                    </property>
@@ -3413,7 +3369,7 @@ QPushButton{
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QLabel" name="label_38">
+                  <widget class="QLabel" name="saved_label">
                    <property name="text">
                     <string/>
                    </property>
@@ -3495,6 +3451,149 @@ QPushButton{
        <attribute name="title">
         <string>Nueva predicción</string>
        </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_21">
+        <item>
+         <widget class="QLabel" name="label_37">
+          <property name="text">
+           <string>Selecciona la carpeta con los textos a predecir:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_45" stretch="8,1">
+          <item>
+           <widget class="QLineEdit" name="pred_line"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="folder_pred_button">
+            <property name="text">
+             <string>añadir</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_38">
+          <property name="text">
+           <string>Selecciona el modelo entrenado a utilizar:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_53" stretch="8,1">
+          <item>
+           <widget class="QLineEdit" name="model_line"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="model_pred_button">
+            <property name="text">
+             <string>añadir</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_55">
+          <item>
+           <widget class="QLabel" name="label_39">
+            <property name="text">
+             <string>Preprocesar los nuevos textos (asegúrate de que la configuración de preprocesamiento es la misma que en los textos de entrenamiento)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="prep_prediction_button">
+            <property name="text">
+             <string>PREPROCESAR</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="pred_prep_label">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_88">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_54">
+          <item>
+           <widget class="QPushButton" name="pred_button">
+            <property name="text">
+             <string>Realizar predicción</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="pred_label">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="export_button">
+            <property name="text">
+             <string>Exportar resultados a Excel</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="export_label">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_87">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableView" name="pred_tableView">
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustToContents</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::EditKeyPressed</set>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>

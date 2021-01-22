@@ -1,5 +1,6 @@
 import sys
 import time
+import pickle
 from data_preprocessing import *
 from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtWidgets import (QApplication, QDialog,
@@ -50,7 +51,10 @@ class CVTraining(QThread):
 
 class entrenamiento_y_resultados():
     def initEntrenamiento(self):
-        self.trainModels_button.clicked.connect(self.initCrossValidation)
+        self.CVModels_button.clicked.connect(self.initCrossValidation)
+        self.training_button.clicked.connect(self.training)
+        self.save_model_button.clicked.connect(self.saveFile)
+        self.modelos_comboBox.currentIndexChanged.connect(self.clearLabels)
 
     def onCountChanged(self, value):
         self.progress.setValue(value)
@@ -79,3 +83,33 @@ class entrenamiento_y_resultados():
         self.cv_tableView.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.cv_tableView.resizeRowsToContents()
         self.cv_tableView.horizontalHeader().setSectionResizeMode(QHeaderView.Interactive)
+
+    def training(self):
+        print(self.modelos)
+        print(self.modelos_comboBox.currentIndex())
+        self.selected_model = self.modelos[self.modelos_comboBox.currentIndex(
+        )]
+        self.training_label.setStyleSheet(
+            "QLabel {font-weight: normal;color : black;}")
+        self.training_label.setText("Entrenando...")
+        self.app.processEvents()
+        self.selected_model.fit(self.X, self.y)
+        self.training_label.setStyleSheet(
+            "QLabel {font-weight: bold;color: rgb(0, 221, 0);}")
+        self.training_label.setText("¡Entrenado!")
+        print(self.selected_model)
+
+    def clearLabels(self):
+        self.training_label.clear()
+        self.saved_label.clear()
+
+    def saveFile(self):
+        fileName = QFileDialog.getSaveFileName(
+            self, "Save File", "/home/untitled.model", "modelo (*.model)")
+        # print(fileName[0])
+        if(fileName[0] != ""):
+            model_tuple = (self.selected_model, self.cv)
+            pickle.dump(model_tuple, open(fileName[0], 'wb'))
+            self.saved_label.setStyleSheet(
+                "QLabel {font-weight: bold;color: rgb(0, 221, 0);}")
+            self.saved_label.setText("Guardado!")

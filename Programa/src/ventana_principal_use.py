@@ -1,22 +1,25 @@
 from ventana_principal_ui import *
 from seleccion_de_modelos import *
 from entrenamiento_y_resultados import *
+from nueva_prediccion import *
 from data_preprocessing import *
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import QSize, QThread
 import time
 
 
-class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, seleccion_de_modelos, entrenamiento_y_resultados):
-    def __init__(self, *args, **kwargs):
+class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, seleccion_de_modelos, entrenamiento_y_resultados, nueva_prediccion):
+    def __init__(self, app, *args, **kwargs):
         QtWidgets.QMainWindow.__init__(self, *args, **kwargs)
         self.setupUi(self)
         self.initModelos()
         self.initEntrenamiento()
+        self.initPrediccion()
         self.desp_button.clicked.connect(self.getfolderDesp)
         self.nodesp_button.clicked.connect(self.getfoldernoDesp)
         self.prepButton.clicked.connect(self.loadingPrep)
         self.matrixButton.clicked.connect(self.loadingMatrix)
+        self.app = app
 
     def getfolderDesp(self):
         dir = QFileDialog.getExistingDirectory(
@@ -64,11 +67,19 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, seleccion_de_modelos, ent
             self.labelMatrix.setText("Procesando...")
 
             if(self.cv_occ.isChecked()):
-                self.X = cv_ocurrences(self.processed_texts, maxdf=(
-                    self.maxdfSpin.value()/100), mindf=(self.mindfSpin.value()/100))
+                self.cv = CountVectorizer(
+                    max_df=(self.maxdfSpin.value()/100), min_df=(self.mindfSpin.value()/100))
+                equis = self.cv.fit_transform(self.processed_texts).toarray()
+                self.X = pd.DataFrame(
+                    equis, columns=self.cv.get_feature_names())
+
             elif(self.cv_tfidf.isChecked()):
-                self.X = cv_TFIDF(self.processed_texts, maxdf=(
-                    self.maxdfSpin.value()/100), mindf=(self.mindfSpin.value()/100))
+                self.cv = TfidfVectorizer(
+                    max_df=(self.maxdfSpin.value()/100), min_df=(self.mindfSpin.value()/100))
+                X_tfidf = self.cv.fit_transform(
+                    self.processed_texts).toarray()
+                self.X = pd.DataFrame(
+                    X_tfidf, columns=self.cv.get_feature_names())
 
             model = PandasModel(self.X, header=True)
             self.tableViewMatriz.setModel(model)
@@ -81,7 +92,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, seleccion_de_modelos, ent
 
 
 if __name__ == "__main__":
+    global app
     app = QtWidgets.QApplication([])
-    window = MainWindow()
+    window = MainWindow(app)
     window.show()
     app.exec_()
