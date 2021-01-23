@@ -6,6 +6,8 @@ from data_preprocessing import *
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtCore import QSize, QThread
 import time
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import CountVectorizer
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, seleccion_de_modelos, entrenamiento_y_resultados, nueva_prediccion):

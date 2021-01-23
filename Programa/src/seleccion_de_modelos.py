@@ -7,7 +7,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.svm import LinearSVC, SVC
 from sklearn.linear_model import SGDClassifier
-from catboost import CatBoostClassifier
 
 
 class seleccion_de_modelos():
@@ -60,9 +59,6 @@ class seleccion_de_modelos():
 
         if(self.sgd_check.isChecked()):
             self.loadSGD()
-
-        if(self.cat_check.isChecked()):
-            self.loadCatBoost()
 
         modelt = PandasModel(self.modelosDataframe, header=True)
         print(self.modelos)
@@ -257,11 +253,4 @@ class seleccion_de_modelos():
              "parámetros": "máximas iteraciones: "+str(self.sgd_spinBox.value()) +
              "\nritmo de aprendizaje: "+self.sgd_comboBox.currentText() +
              "\nritmo de aprendizaje inicial (eta0): "+str(self.sgd_doubleSpinBox_rate.value())},
-            ignore_index=True)
-
-    def loadCatBoost(self):
-        self.modelos.append(CatBoostClassifier())
-        self.modelosDataframe = self.modelosDataframe.append(
-            {"modelo": "CatBoost",
-             "parámetros": "Con los valores por defecto, el modelo catBoost se autobalancea."},
             ignore_index=True)
