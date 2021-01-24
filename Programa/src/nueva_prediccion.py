@@ -18,12 +18,15 @@ class nueva_prediccion():
         dir = QFileDialog.getExistingDirectory(
             self, "Open Directory", "/home", QFileDialog.ShowDirsOnly)
         if dir != "":
+            self.pred_prep_label.clear()
             self.pred_line.setText(dir)
 
     def getModelPred(self):
         fname = QFileDialog.getOpenFileName(self, 'Open file',
                                             '/home', "modelo (*.model)")
-        self.model_line.setText(fname[0])
+        if fname[0] != "":
+            self.pred_prep_label.clear()
+            self.model_line.setText(fname[0])
 
     def prediction_Preprocessing(self):
         if(self.model_line.text() == ""):
@@ -58,17 +61,27 @@ class nueva_prediccion():
 
     def make_prediction(self):
         loaded_model = self.loaded_tuple[0]
-        result = loaded_model.predict_proba(self.X_new_pred)
-
-        self.prediction_dataset = pd.DataFrame(
-            columns=['nombre de archivo', 'predicción', 'confianza (despoblación)', 'confianza (no despoblación)'])
-        for i in range(len(self.newText_names)):
-            self.prediction_dataset = self.prediction_dataset.append(
-                {"nombre de archivo": self.newText_names[i],
-                 "predicción": 'despoblación' if result[i][0] >= 0.5 else 'no despoblación',
-                 "confianza (despoblación)": str(result[i][0]),
-                 "confianza (no despoblación)": str(result[i][1])},
-                ignore_index=True)
+        model_name = type(loaded_model).__name__
+        if(model_name != "LinearSVC" and model_name != "SVC" and model_name != "SGDClassifier"):
+            result = loaded_model.predict_proba(self.X_new_pred)
+            self.prediction_dataset = pd.DataFrame(
+                columns=['nombre de archivo', 'predicción', 'confianza (despoblación)', 'confianza (no despoblación)'])
+            for i in range(len(self.newText_names)):
+                self.prediction_dataset = self.prediction_dataset.append(
+                    {"nombre de archivo": self.newText_names[i],
+                     "predicción": 'despoblación' if result[i][0] >= 0.5 else 'no despoblación',
+                     "confianza (despoblación)": str(result[i][0]),
+                     "confianza (no despoblación)": str(result[i][1])},
+                    ignore_index=True)
+        else:
+            result = loaded_model.predict(self.X_new_pred)
+            self.prediction_dataset = pd.DataFrame(
+                columns=['nombre de archivo', 'predicción'])
+            for i in range(len(self.newText_names)):
+                self.prediction_dataset = self.prediction_dataset.append(
+                    {"nombre de archivo": self.newText_names[i],
+                     "predicción": 'despoblación' if result[i] == 0 else 'no despoblación'},
+                    ignore_index=True)
 
         proxyModel = QSortFilterProxyModel()
         modelt = PandasModel(self.prediction_dataset, header=True)

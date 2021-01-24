@@ -104,8 +104,6 @@ QPushButton{
           <property name="font">
            <font>
             <pointsize>-1</pointsize>
-            <weight>50</weight>
-            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -145,8 +143,6 @@ QPushButton{
           <property name="font">
            <font>
             <pointsize>-1</pointsize>
-            <weight>50</weight>
-            <bold>false</bold>
            </font>
           </property>
           <property name="text">
@@ -576,8 +572,8 @@ QPushButton{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>564</width>
-             <height>154</height>
+             <width>584</width>
+             <height>168</height>
             </rect>
            </property>
            <attribute name="label">
@@ -835,8 +831,8 @@ QPushButton{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>324</width>
-             <height>82</height>
+             <width>350</width>
+             <height>99</height>
             </rect>
            </property>
            <attribute name="label">
@@ -979,8 +975,8 @@ QPushButton{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>590</width>
-             <height>168</height>
+             <width>610</width>
+             <height>194</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1284,8 +1280,8 @@ QPushButton{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>368</width>
-             <height>110</height>
+             <width>394</width>
+             <height>130</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1473,8 +1469,8 @@ QPushButton{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>515</width>
-             <height>198</height>
+             <width>541</width>
+             <height>227</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1811,8 +1807,8 @@ QPushButton{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>832</width>
-             <height>278</height>
+             <width>846</width>
+             <height>307</height>
             </rect>
            </property>
            <attribute name="label">
@@ -2003,7 +1999,7 @@ QPushButton{
                    <x>0</x>
                    <y>0</y>
                    <width>800</width>
-                   <height>100</height>
+                   <height>135</height>
                   </rect>
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -2289,8 +2285,8 @@ QPushButton{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>508</width>
-             <height>138</height>
+             <width>532</width>
+             <height>161</height>
             </rect>
            </property>
            <attribute name="label">
@@ -2508,8 +2504,8 @@ QPushButton{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>363</width>
-             <height>112</height>
+             <width>389</width>
+             <height>132</height>
             </rect>
            </property>
            <attribute name="label">
@@ -2703,8 +2699,8 @@ QPushButton{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>530</width>
-             <height>138</height>
+             <width>550</width>
+             <height>161</height>
             </rect>
            </property>
            <attribute name="label">
@@ -2958,8 +2954,8 @@ QPushButton{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>1038</width>
-             <height>435</height>
+             <width>1022</width>
+             <height>389</height>
             </rect>
            </property>
            <attribute name="label">

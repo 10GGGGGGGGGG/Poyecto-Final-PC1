@@ -106,7 +106,6 @@ class entrenamiento_y_resultados():
     def saveFile(self):
         fileName = QFileDialog.getSaveFileName(
             self, "Save File", "/home/untitled.model", "modelo (*.model)")
-        # print(fileName[0])
         if(fileName[0] != ""):
             model_tuple = (self.selected_model, self.cv)
             pickle.dump(model_tuple, open(fileName[0], 'wb'))
