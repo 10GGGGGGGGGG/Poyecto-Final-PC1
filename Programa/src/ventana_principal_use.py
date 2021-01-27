@@ -25,13 +25,13 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow, seleccion_de_modelos, ent
 
     def getfolderDesp(self):
         dir = QFileDialog.getExistingDirectory(
-            self, "Open Directory", "/home", QFileDialog.ShowDirsOnly)
+            self, "Seleccionar directorio", "/home", QFileDialog.ShowDirsOnly)
         if dir != "":
             self.desp_line.setText(dir)
 
     def getfoldernoDesp(self):
         dir = QFileDialog.getExistingDirectory(
-            self, "Open Directory", "/home", QFileDialog.ShowDirsOnly)
+            self, "Seleccionar directorio", "/home", QFileDialog.ShowDirsOnly)
         if dir != "":
             self.nodesp_line.setText(dir)
 

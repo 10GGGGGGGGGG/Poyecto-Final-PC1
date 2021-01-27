@@ -16,13 +16,13 @@ class nueva_prediccion():
     def getfolderPred(self):
         self.pred_prep_label.clear()
         dir = QFileDialog.getExistingDirectory(
-            self, "Open Directory", "/home", QFileDialog.ShowDirsOnly)
+            self, "Seleccionar directorio", "/home", QFileDialog.ShowDirsOnly)
         if dir != "":
             self.pred_prep_label.clear()
             self.pred_line.setText(dir)
 
     def getModelPred(self):
-        fname = QFileDialog.getOpenFileName(self, 'Open file',
+        fname = QFileDialog.getOpenFileName(self, 'Seleccionar modelo',
                                             '/home', "modelo (*.model)")
         if fname[0] != "":
             self.pred_prep_label.clear()
