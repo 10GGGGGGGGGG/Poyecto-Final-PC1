@@ -6,3 +6,6 @@ https://drive.google.com/file/d/1jUJaRs4XJrQb16SN4-lE8185WSO3ENUG/view?usp=shari
 </br>
 ### Enlace de descarga del .exe: </br>
 https://drive.google.com/file/d/1Fy2Hjg48N733ct_XoxHWVC8EKsN0VBL3/view?usp=sharing
+</br>
+### Vídeo demostración de la aplicación: </br>
+https://youtu.be/RzhXxBf15BA
